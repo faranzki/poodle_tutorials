@@ -54,7 +54,7 @@ void TempWriter::writer(std::string filename, std::vector<float> data, int lengt
 }
 
 int main(int argc, char **argv){
-	ros::init(argc, argv, "listener");
+	ros::init(argc, argv, "writer");
 	//declare all the different classes
 	ros::NodeHandle n;
 	Subscriber sbscrbr;
