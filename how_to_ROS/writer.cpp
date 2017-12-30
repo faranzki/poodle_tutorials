@@ -42,10 +42,10 @@ std::vector<std::string> & Subscriber::getTimeStampTemp(){
 
 class TempWriter{
 	public:
-		void writer(std::string filename, std::vector<float> data, int length, std::vector<double> time);
+		void writer(std::string filename, std::vector<float> data, int length, std::vector<std::string> time);
 };
 
-void TempWriter::writer(std::string filename, std::vector<float> data, int length, std::vector<double> time){
+void TempWriter::writer(std::string filename, std::vector<float> data, int length, std::vector<std::string> time){
 	std::ofstream file(filename.c_str());
 	file << "Time" << ";" << "Temperature" << std::endl;
 	for (int i = 0; i < length; i++){
@@ -65,7 +65,7 @@ int main(int argc, char **argv){
 	//get all the data stored as members of the listener class
 	std::vector<float> tmp = sbscrbr.getTemperature();
 	int length_temp = tmp.size();
-	std::vector<std::string> time_temp = sbscrbr.getTimeTemp();
+	std::vector<std::string> time_temp = sbscrbr.getTimeStampTemp();
 	//write the data to file with the writer functions of the writer classes
 	std::string filename_tmp = "tempdata";
 	tmpwrtr.writer(filename_tmp, tmp, length_temp, time_temp);
